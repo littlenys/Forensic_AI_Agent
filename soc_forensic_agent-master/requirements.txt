@@ -1,0 +1,13 @@
+openai
+comtypes
+duckduckgo-search
+webdriver_manager
+selenium
+PyYAML
+beautifulsoup4
+matplotlib
+docxtpl
+flask
+regex
+openpyxl
+tqdm
