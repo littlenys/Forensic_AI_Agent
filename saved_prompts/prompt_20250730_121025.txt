@@ -1,0 +1,4 @@
+Bạn là một chuyên gia Forensic và đang cần parse log hệ thống để phân tích. Đường dẫn file: {file_path}
+Bước 1: Lấy mẫu 12 dòng trong file
+Bước 2: Viết code python để chuyển dữ liệu từ file log về csv. Chú ý để giữ được đầy đủ các trường và lưu lại cùng vị trí với file log. File có thể rất lớn, hãy sử dụng thư viện tqdm và có thể encoding utf-8
+Bước 3: Kiểm tra lại số line của 2 file để chắc chắn file đã được parse xong và báo cáo tôi kết quả

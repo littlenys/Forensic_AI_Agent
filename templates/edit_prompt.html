@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chỉnh sửa Prompt</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>✏ Chỉnh sửa Prompt</h1>
+      <p>Hãy cập nhật nội dung prompt theo ý bạn.</p>
+    </header>
+
+    <section class="card">
+      <form method="POST">
+        <textarea name="prompt_text" rows="15" style="width: 100%;" required>{{ prompt_text }}</textarea>
+        <br>
+        <button type="submit">💾 Lưu Prompt</button>
+      </form>
+    </section>
+
+    <a href="{{ url_for('index') }}">⬅ Về trang chính</a>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+  </div>
+</body>
+</html>

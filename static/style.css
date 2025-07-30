@@ -1,0 +1,88 @@
+body {
+  background-color: #fce4ec;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  color: #444;
+}
+
+.container {
+  max-width: 960px;
+  margin: auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  color: #ad1457;
+  margin-bottom: 30px;
+}
+
+.card {
+  background: #fff0f5;
+  border: 1px solid #f8bbd0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(255, 182, 193, 0.2);
+}
+
+.file-select {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #f8bbd0;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #ec407a;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #d81b60;
+}
+
+.run-btn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.prompt-box {
+  background-color: #fce4ec;
+  border: 1px solid #f8bbd0;
+  padding: 15px;
+  white-space: pre-wrap;
+  border-radius: 5px;
+  font-family: monospace;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.nav-links {
+  margin-top: 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  margin-right: 20px;
+  color: #ad1457;
+  font-weight: bold;
+}
+
+.flash {
+  background: #ffcdd2;
+  padding: 10px;
+  border: 1px solid #e57373;
+  margin-top: 15px;
+  border-radius: 5px;
+}

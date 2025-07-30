@@ -9,7 +9,6 @@ from config import custom_function
 from toolkits.loader import load_toolkit_plugins
 from toolkits.plugins.message_ask_user.schema import MessageAskUserParams
 from toolkits.plugins.message_notify_user.schema import MessageNotifyUserParams
-from toolkits.plugins.confluence_download.schema import ConfluenceDownloadParams
 from toolkits.plugins.documents_extract_comment.schema import DocumentsExtractCommentParams
 from toolkits.plugins.docx_fill.schema import DocxFillParams
 from toolkits.plugins.file_get_sample_lines.schema import FileGetSampleNLinesParams

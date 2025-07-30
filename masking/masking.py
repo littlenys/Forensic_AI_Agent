@@ -59,26 +59,32 @@ class MaskingRule:
         placeholder_map = placeholder_map
         random_seed = generate_uid()
         def replace_with_placeholder_ignore(match):
-            original_word = match.group(0)
-            placeholder = replacement_map[original_word.lower()]
-            if original_word not in placeholder_map.values():
-                unique_placeholder = f"{placeholder}_masking_{abs(hash(original_word+random_seed))}"
-                placeholder_map[unique_placeholder] = original_word
-            else:
-                found_keys = [key for key, value in placeholder_map.items() if value == original_word]
-                unique_placeholder = found_keys[0]
-            return unique_placeholder
+            try:
+                original_word = match.group(0)
+                placeholder = replacement_map[original_word.lower()]
+                if original_word not in placeholder_map.values():
+                    unique_placeholder = f"{placeholder}_masking_{abs(hash(original_word+random_seed))}"
+                    placeholder_map[unique_placeholder] = original_word
+                else:
+                    found_keys = [key for key, value in placeholder_map.items() if value == original_word]
+                    unique_placeholder = found_keys[0]
+                return unique_placeholder
+            except:
+                pass
         
         def replace_with_placeholder(match):
-            original_word = match.group(0)
-            placeholder = replacement_map[original_word]
-            if original_word not in placeholder_map.values():
-                unique_placeholder = f"{placeholder}_masking_{abs(hash(original_word+random_seed))}"
-                placeholder_map[unique_placeholder] = original_word
-            else:
-                found_keys = [key for key, value in placeholder_map.items() if value == original_word]
-                unique_placeholder = found_keys[0]
-            return unique_placeholder
+            try:
+                original_word = match.group(0)
+                placeholder = replacement_map[original_word]
+                if original_word not in placeholder_map.values():
+                    unique_placeholder = f"{placeholder}_masking_{abs(hash(original_word+random_seed))}"
+                    placeholder_map[unique_placeholder] = original_word
+                else:
+                    found_keys = [key for key, value in placeholder_map.items() if value == original_word]
+                    unique_placeholder = found_keys[0]
+                return unique_placeholder
+            except:
+                pass
 
         # Prepare the regex pattern for all words to be replaced
         pattern = r'\b(?:' + '|'.join(re.escape(word) for word in replacement_map.keys()) + r')\b'

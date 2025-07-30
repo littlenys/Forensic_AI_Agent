@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Danh sách Prompt</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🧾 Danh sách Prompt đã lưu</h1>
+      <p>Chọn prompt bạn muốn sử dụng.</p>
+    </header>
+
+    <section class="card">
+      <form method="POST">
+        <ul class="file-list">
+          {% for prompt in prompts %}
+            <li>
+              <label>
+                <input type="radio" name="selected_prompt" value="{{ prompt.path }}"
+                       {% if current == prompt.path %}checked{% endif %}>
+                {{ prompt.name }}
+              </label>
+              <a href="{{ url_for('view_prompt', filename=prompt.name) }}" target="_blank">👁 Xem</a>
+            </li>
+          {% endfor %}
+        </ul>
+        <button type="submit">✅ Dùng Prompt đã chọn</button>
+      </form>
+    </section>
+
+    <a href="{{ url_for('index') }}">⬅ Về trang chính</a>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+  </div>
+</body>
+</html>

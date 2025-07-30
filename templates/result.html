@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kết quả phân tích</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    /* Giữ nguyên màu pastel của bạn, chỉ bổ sung cho log */
+    .prompt-box {
+      font-family: monospace;
+      white-space: pre-wrap;
+      background-color: #f3f4f6; /* pastel nhẹ */
+      padding: 1em;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+      max-height: 400px;
+      overflow-y: auto;
+      line-height: 1.4;
+      color: #333;
+    }
+
+    /* Mỗi message là 1 box riêng */
+    .log-message {
+      background-color: #e0f2f1; /* pastel xanh nhẹ */
+      border: 1px solid #b2dfdb;
+      border-radius: 8px;
+      margin-bottom: 1em;
+      padding: 12px 16px;
+      box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+    }
+
+    .log-message strong {
+      color: #00796b; /* xanh đậm */
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    /* Đoạn text giữ nguyên xuống dòng */
+    .log-text {
+      white-space: pre-wrap;
+      margin: 0;
+    }
+
+    /* Danh sách file */
+    ul.file-list {
+      padding-left: 20px;
+    }
+    ul.file-list li {
+      margin-bottom: 4px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📊 Kết quả phân tích</h1>
+      <p>Thông tin từ quá trình xử lý log sẽ hiển thị bên dưới.</p>
+    </header>
+
+    <section class="card">
+      <h2>📜 Nội dung log</h2>
+      <div id="log-box" class="prompt-box">
+        {% for msg in messages %}
+          {% set lines = msg.split('\n') %}
+          <div class="log-message">
+            <strong>{{ lines[0] }}</strong>
+            <div class="log-text">{{ lines[1:] | join('\n') }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>📁 Danh sách file được tạo</h2>
+      <ul class="file-list">
+        {% for file in files %}
+          <li>{{ file }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <a href="{{ url_for('index') }}">⬅ Về trang chính</a>
+  </div>
+</body>
+</html>

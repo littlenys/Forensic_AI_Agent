@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Forensic Log Analyzer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    #hiddenFileInput {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔍 Forensic Log Analyzer</h1>
+      <p>Phân tích log hệ thống phục vụ điều tra số</p>
+    </header>
+
+    <section class="card">
+      <h2>📁 Chọn file log</h2>
+      <form method="POST" enctype="multipart/form-data">
+        <div class="file-select">
+          <!-- cho phép người dùng tự nhập hoặc chỉnh sửa -->
+          <input type="text" id="log_path" name="log_path" placeholder="Đường dẫn tuyệt đối của file" required autocomplete="off">
+          <button type="button" onclick="document.getElementById('hiddenFileInput').click()">🗂 Chọn File</button>
+          <input type="file" id="hiddenFileInput" name="logfile" accept=".log,.txt,.csv" />
+        </div>
+        <button type="submit" class="run-btn">▶ Phân tích</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>📝 Prompt hiện tại</h2>
+      <pre class="prompt-box">{{ prompt }}</pre>
+      <div class="nav-links">
+        <a href="{{ url_for('edit_prompt') }}">✏ Chỉnh sửa Prompt</a>
+        <a href="{{ url_for('prompts') }}">🧾 Danh sách Prompt</a>
+      </div>
+    </section>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  <script>
+    const hiddenFileInput = document.getElementById('hiddenFileInput');
+    const logPathInput = document.getElementById('log_path');
+
+    hiddenFileInput.addEventListener('change', () => {
+      if (hiddenFileInput.files.length > 0) {
+        logPathInput.value = hiddenFileInput.files[0].name;
+      }
+    });
+  </script>
+</body>
+</html>
